@@ -1,6 +1,6 @@
 my_dict = {'tuple': ('tuple_1', 'tuple_2', 'tuple_3', 'tuple_4', 'tuple_5'),
-           'list':  ['list_1', 'list_2', 'list_3', 'list_4', 'list_5'],
-           'dict':  {'dict_1': 'd_1', 'dict_2': 'd_2', 'dict_3': 'd_3', 'dict_4': 'd_4', 'dict_5': 'd_5'},
+           'list': ['list_1', 'list_2', 'list_3', 'list_4', 'list_5'],
+           'dict': {'dict_1': 'd_1', 'dict_2': 'd_2', 'dict_3': 'd_3', 'dict_4': 'd_4', 'dict_5': 'd_5'},
            'set': {'set_1', 'set_2', 'set_3', 'set_4', 'set_5'}
            }
 
