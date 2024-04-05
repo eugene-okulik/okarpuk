@@ -12,7 +12,7 @@ my_list.append('list_6')
 my_list.pop(1)
 
 my_new_dict = my_dict.get('dict')
-my_new_dict['i am a tuple'] = 'new value'
+my_new_dict[('i am a tuple',)] = 'new value'
 del my_new_dict['dict_2']
 
 my_set = my_dict.get('set')
