@@ -17,4 +17,3 @@ for word in words:
         fin_words.append(word)
 
 print(' '.join(fin_words))
-
