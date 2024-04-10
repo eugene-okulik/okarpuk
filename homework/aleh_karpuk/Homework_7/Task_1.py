@@ -1,7 +1,7 @@
 secret_digit = 10
 
 while True:
-    user_input = int(input('Try to get secret digit: '))
+    user_input = int(input('Try to get the secret digit: '))
     if user_input == secret_digit:
         break
 
