@@ -7,6 +7,7 @@ def fibonacci():
         a, b = b, a + b
         yield b
 
+
 count = 1
 
 for num in fibonacci():
