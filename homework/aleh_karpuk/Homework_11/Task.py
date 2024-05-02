@@ -38,8 +38,8 @@ for book in books:
 first_school_book = SchoolBook('Organic chemistry', 'Ivanov', 222, 666666,
                                True, 'Chemistry', 10, True)
 
-second_school_book = SchoolBook('Geometry', 'Petrov', 500, 777777,
-                               False, 'Math', 7, False)
+second_school_book = SchoolBook('Geometry', 'Petrov', 500, 777777, False,
+                                'Math', 7, False)
 
 third_school_book = SchoolBook('Botanica', 'Sidiriv', 400, 888888,
                                False, 'Biology', 8, False)
@@ -49,7 +49,8 @@ school_books = [first_school_book, second_school_book, third_school_book]
 for book in school_books:
     if book.is_reserved:
         print(f'Book name: {book.book_name}, Book author: {book.book_author}, '
-              f'Pages quantity: {book.book_pages_qty}, Subject: {book.subject}, Study year: {book.study_year}, RESERVED')
+              f'Pages quantity: {book.book_pages_qty}, Subject: {book.subject}, Study year: {book.study_year}, '
+              f'RESERVED')
     else:
         print(f'Book name: {book.book_name}, Book author: {book.book_author}, '
               f'Pages quantity: {book.book_pages_qty}, Subject: {book.subject}, Study year: {book.study_year}')
