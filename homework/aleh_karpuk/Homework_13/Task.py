@@ -38,11 +38,14 @@ for data_line in read_file():
         if 'распечатать эту дату, но на неделю позже' in action:
             data_line = "\nAdd week - " + add_week(date_str)
             new_file.write(data_line)
+            print(data_line)
 
         if 'какой это будет день недели' in action:
             data_line = "\nDay of week - " + get_day_of_week(date_str)
             new_file.write(data_line)
+            print(data_line)
 
         if 'сколько дней назад была эта дата' in action:
             data_line = "\nDays ago - " + days_ago(date_str)
             new_file.write(data_line)
+            print(data_line)
