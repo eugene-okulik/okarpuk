@@ -49,4 +49,3 @@ for data_line in read_file():
             data_line = "\nDays ago - " + days_ago(date_str)
             new_file.write(data_line)
             print(data_line)
-
