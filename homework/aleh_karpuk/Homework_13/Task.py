@@ -5,48 +5,44 @@ base_path = os.path.dirname(__file__)
 homework_path = os.path.dirname(os.path.dirname(base_path))
 hw13_file_path = os.path.join(homework_path, 'eugene_okulik', 'hw_13', 'data.txt')
 
-print(hw13_file_path)
 
-with open(hw13_file_path) as basic_file:
-    basic_file.read()
+def add_week(add_week_str):
+    date = datetime.datetime.strptime(add_week_str, '%Y-%m-%d %H:%M:%S.%f')
+    new_date = date + datetime.timedelta(days=7)
+    return new_date.strftime('%Y-%m-%d %H:%M:%S.%f')
+
+
+def get_day_of_week(get_day_str):
+    date = datetime.datetime.strptime(get_day_str, '%Y-%m-%d %H:%M:%S.%f')
+    return date.strftime('%A')
+
+
+def days_ago(ago_str):
+    date = datetime.datetime.strptime(ago_str, '%Y-%m-%d %H:%M:%S.%f')
+    days_ago_qty = (datetime.datetime.now() - date).days
+    return str(days_ago_qty)
+
 
 def read_file():
-    with open(hw13_file_path, 'r') as data_file:
-        # print(data_file)
+    with open(hw13_file_path, "r") as data_file:
         for line in data_file.readlines():
             yield line
 
 
 for data_line in read_file():
     with open(hw13_file_path, 'a') as new_file:
-        data_line = data_line.split(" - ")[0]
+        parts = data_line.split(" - ")
+        date_str = (parts[0])[3:]
+        action = parts[1].strip()
 
-        if data_line.startswith("1"):
-            data_line = data_line.replace('1. ', '')
+        if 'распечатать эту дату, но на неделю позже' in action:
+            data_line = "\nAdd week - " + add_week(date_str)
+            new_file.write(data_line)
 
-            python_data_line = datetime.datetime.strptime(data_line, '%Y-%m-%d %H:%M:%S.%f')
+        if 'какой это будет день недели' in action:
+            data_line = "\nDay of week - " + get_day_of_week(date_str)
+            new_file.write(data_line)
 
-            new_data_line = python_data_line + datetime.timedelta(weeks=1)
-
-
-        new_file.write(data_line)
-
-
-
-        # parts_2 = parts_1[0]
-        # print(f'parts_1 {parts_1}')
-        # print(f'parts_2 {parts_2}')
-
-
-
-
-
-
-
-
-# def print_date_week_later(date_str):
-#     date = datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S.%f")
-#     new_date = date + datetime.timedelta(weeks=1)
-#     print(new_date)
-
-
+        if 'сколько дней назад была эта дата' in action:
+            data_line = "\nDays ago - " + days_ago(date_str)
+            new_file.write(data_line)
