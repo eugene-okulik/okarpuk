@@ -12,38 +12,59 @@ INSERT INTO books (title, taken_by_student_id) VALUES ('The Martian', 1165 )
 
 3. Создайте группу (group) и определите своего студента туда
 INSERT INTO `groups` (title, start_date, end_date) VALUES ('SuperGroup', 'apr 2024', 'aug 2024' )
-
+UPDATE students SET group_id = 1152 WHERE name = 'Oleg' AND second_name = 'Karpuk'
 
 
 4. Создайте несколько учебных предметов (subjects)
-
+INSERT INTO subjets (title) VALUES ('Oleg_Subject_1' )
+INSERT INTO subjets (title) VALUES ('Oleg_Subject_2' )
+INSERT INTO subjets (title) VALUES ('Oleg_Subject_3' )
 
 
 5. Создайте по два занятия для каждого предмета (lessons)
-
+INSERT INTO lessons (title, subject_id) VALUES ('Oleg_Lesson_1', 1527 )
+INSERT INTO lessons (title, subject_id) VALUES ('Oleg_Lesson_2', 1527 )
+INSERT INTO lessons (title, subject_id) VALUES ('Oleg_Lesson_2-1', 1528 )
+INSERT INTO lessons (title, subject_id) VALUES ('Oleg_Lesson_2-2', 1528 )
+INSERT INTO lessons (title, subject_id) VALUES ('Oleg_Lesson_3-1', 1529 )
+INSERT INTO lessons (title, subject_id) VALUES ('Oleg_Lesson_3-2', 1529 )
 
 
 6. Поставьте своему студенту оценки (marks) для всех созданных вами занятий
-
-
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('A', 3760, 1165 )
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('B', 3761, 1165 )
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('A', 3762, 1165 )
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('C', 3763, 1165 )
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('C', 3764, 1165 )
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('A', 3765, 1165 )
 
 
 Получите информацию из базы данных:
 
 1. Все оценки студента
+SELECT * FROM marks WHERE student_id = 1165
 
 
 2. Все книги, которые находятся у студента
-
+SELECT * FROM books WHERE taken_by_student_id = 1165
 
 
 3. Для вашего студента выведите всё, что о нем есть в базе: группа, книги, оценки с названиями занятий и предметов (всё одним запросом с использованием Join)
-
-
-
-
-
-
-
-
-
+SELECT students.name as 'Student name', students.second_name as 'Student surname', students.group_id as 'Group ID',
+groups.title as 'Group title', groups.start_date as 'Start date', groups.end_date as 'End date',
+subjets.title as 'Subject title',
+lessons.title as 'Lesson title',
+marks.value as 'Mark',
+books.title as 'Book title'
+FROM students
+JOIN `groups`
+ON students.group_id = groups.id
+JOIN books
+ON students.id = books.taken_by_student_id
+JOIN marks
+ON students.id = marks.student_id
+JOIN lessons
+ON marks.lesson_id = lessons.id
+JOIN subjets
+ON lessons.subject_id = subjets.id
+WHERE student_id = 1165
