@@ -125,7 +125,7 @@ WHERE student_id = {student_id}
 '''
 cursor.execute(select_all_info_query)
 student_info = cursor.fetchall()
-print('ALL INFO ABOUT STUDENT:')
+print('ALL INFORMATION ABOUT STUDENT:')
 for i in student_info:
     print(i)
 
