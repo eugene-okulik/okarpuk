@@ -26,10 +26,10 @@ with open(hw16_file_path, newline='') as file:
     for row in file_data:
         name, second_name, group_title, book_title, subject_title, lesson_title, mark_value = row
 
-        select_all_info_query = f'''SELECT
+        select_all_info_query = '''SELECT 
         students.name,
-        students.second_name, 
-        groups.title, 
+        students.second_name,
+        groups.title,
         subjets.title,
         lessons.title,
         marks.value,
