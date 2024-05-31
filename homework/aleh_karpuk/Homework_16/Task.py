@@ -1,39 +1,34 @@
 import os
 import csv
 import mysql.connector as mysql
+from dotenv import load_dotenv
 
-# ПЕРЕДЕЛАТЬ НА ПОДКЛЮЧЕНИЕ М ПОМОЩЬЮ DOTENV
+load_dotenv()
 
 db = mysql.connect(
-    user='st-onl',
-    passwd='AVNS_tegPDkI5BlB2lW5eASC',
-    host='db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com',
-    port=25060,
-    database='st-onl'
+    user=os.getenv("DB_USER"),
+    passwd=os.getenv("DB_PASSW"),
+    host=os.getenv("DB_HOST"),
+    port=os.getenv("DB_PORT"),
+    database=os.getenv("DB_NAME")
 )
 
 cursor = db.cursor()
-
-
 
 base_path = os.path.dirname(__file__)
 homework_path = os.path.dirname(os.path.dirname(base_path))
 hw16_file_path = os.path.join(homework_path, 'eugene_okulik', 'Lesson_16', 'hw_data', 'data.csv')
 
-
-
 with open(hw16_file_path, newline='') as file:
     file_data = csv.reader(file)
-    next(file_data)  # Пропускаем заголовок
+    next(file_data)
 
     for row in file_data:
         name, second_name, group_title, book_title, subject_title, lesson_title, mark_value = row
 
-
-
-
-        select_all_info_query = f'''
-        SELECT students.name, students.second_name, 
+        select_all_info_query = f'''SELECT
+        students.name,
+        students.second_name, 
         groups.title, 
         subjets.title,
         lessons.title,
@@ -56,8 +51,6 @@ with open(hw16_file_path, newline='') as file:
 
         cursor.execute(select_all_info_query, values)
         result = cursor.fetchall()
-
-
 
         if result:
             print(f"{row} - FOUND in database")
