@@ -20,6 +20,7 @@ def post_an_object():
     )
     assert response.status_code == 200, 'Status code is incorrect'
     assert response.json()['name'] == "Apple MacBook Pro 16", 'Name is incorrect'
+    assert response.json()['data']['year'] == 2024, 'Year is incorrect'
     print("POST test PASSED")
 
 
@@ -67,6 +68,7 @@ def put_an_object():
     assert response.status_code == 200, 'Status code is incorrect'
     assert response.json()['id'] == post_id, 'ID is incorrect'
     assert response.json()['name'] == 'Honor Magicbook X16', 'Name is incorrect'
+    assert response.json()['data']['CPU model'] == 'Intel Core i5', 'CPU model is incorrect'
     clear(post_id)
     print("PUT test PASSED")
 
@@ -85,6 +87,7 @@ def patch_an_object():
     assert response.status_code == 200, 'Status code is incorrect'
     assert response.json()['id'] == post_id, 'ID is incorrect'
     assert response.json()['name'] == 'Acer Aspire 5', 'Name is incorrect'
+    assert response.json()['data']['price'] == 1500, 'Price is incorrect'
     clear(post_id)
     print("PATCH test PASSED")
 
