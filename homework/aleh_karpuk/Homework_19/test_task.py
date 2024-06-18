@@ -20,14 +20,36 @@ def new_object():
     requests.delete(f'https://api.restful-api.dev/objects/{post_id}')
 
 
-###### TEST - CREATE OBJECT ######
+@pytest.fixture(scope='session')
+def start_complete():
+    print('\nStart testing')
+    yield
+    print('\nTesting completed')
+
+
+@pytest.fixture()
+def before_after_every_test():
+    print('\nBefore test')
+    yield
+    print('\nAfter test')
+
+
 @pytest.mark.parametrize('body', [{"name": "Apple MacBook Pro 16",
-                                   "data": {"year": 2024, "price": 1999.99,  "CPU model": "Intel Core i7", "Hard disk size": "1 TB"}},
+                                   "data": {"year": 2024,
+                                            "price": 1999.99,
+                                            "CPU model": "Intel Core i7",
+                                            "Hard disk size": "1 TB"}},
                                   {"name": "Apple MacBook Air M1",
-                                   "data": {"year": 2020, "price": 888.88,  "CPU model": "Intel Core i3", "Hard disk size": "250 GB"}},
+                                   "data": {"year": 2020,
+                                            "price": 888.88,
+                                            "CPU model": "Intel Core i3",
+                                            "Hard disk size": "250 GB"}},
                                   {"name": "Apple MacBook Air M2",
-                                   "data": {"year": 2020, "price": 1888.88,  "CPU model": "Intel Core i5", "Hard disk size": "500 GB"}}])
-def test_post_an_object(body):
+                                   "data": {"year": 2020,
+                                            "price": 1888.88,
+                                            "CPU model": "Intel Core i5",
+                                            "Hard disk size": "500 GB"}}])
+def test_post_an_object(body, start_complete, before_after_every_test):
     headers = {'Content-Type': 'application/json'}
     response = requests.post(
         'https://api.restful-api.dev/objects',
@@ -37,13 +59,14 @@ def test_post_an_object(body):
     assert response.status_code == 200, 'Status code is incorrect'
 
 
-
-
-
-def test_put_an_object(new_object):
-    # post_id = new_object()
+@pytest.mark.critical
+def test_put_an_object(new_object, start_complete, before_after_every_test):
     body = {"name": "Honor Magicbook X16",
-            "data": {"year": 2022, "price": 1333, "CPU model": "Intel Core i5", "Hard disk size": "250 GB", "color": "silver"}}
+            "data": {"year": 2022,
+                     "price": 1333,
+                     "CPU model": "Intel Core i5",
+                     "Hard disk size": "250 GB",
+                     "color": "silver"}}
     headers = {'Content-Type': 'application/json'}
     response = requests.put(
         f'https://api.restful-api.dev/objects/{new_object}',
@@ -56,8 +79,8 @@ def test_put_an_object(new_object):
     assert response.json()['data']['CPU model'] == 'Intel Core i5', 'CPU model is incorrect'
 
 
-
-def test_patch_an_object(new_object):
+@pytest.mark.medium
+def test_patch_an_object(new_object, start_complete, before_after_every_test):
     body = {"name": "Acer Aspire 5", }
     headers = {'Content-Type': 'application/json'}
     response = requests.patch(
@@ -71,9 +94,7 @@ def test_patch_an_object(new_object):
     assert response.json()['data']['price'] == 1500, 'Price is incorrect'
 
 
-def test_delete_an_object(new_object):
+def test_delete_an_object(new_object, start_complete, before_after_every_test):
     response = requests.delete(f'https://api.restful-api.dev/objects/{new_object}')
     assert response.status_code == 200, 'Status code is incorrect'
     assert response.json()['message'] == f'Object with id = {new_object} has been deleted.', 'Message is incorrect'
-    print("DELETE test PASSED")
-
