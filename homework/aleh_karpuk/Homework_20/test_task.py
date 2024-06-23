@@ -56,9 +56,9 @@ def test_put_an_object(new_object, start_complete, before_after_every_test):
         assert response.status_code == 200, 'Status code is incorrect'
     with allure.step(f'Check that ID is {new_object}'):
         assert response.json()['id'] == new_object, 'ID is incorrect'
-    with allure.step(f'Check the name'):
+    with allure.step('Check the name'):
         assert response.json()['name'] == 'Honor Magicbook X16', 'Name is incorrect'
-    with allure.step(f'Check the CPU model'):
+    with allure.step('Check the CPU model'):
         assert response.json()['data']['CPU model'] == 'Intel Core i5', 'CPU model is incorrect'
 
 
@@ -79,9 +79,9 @@ def test_patch_an_object(new_object, start_complete, before_after_every_test):
         assert response.status_code == 200, 'Status code is incorrect'
     with allure.step(f'Check that ID is {new_object}'):
         assert response.json()['id'] == new_object, 'ID is incorrect'
-    with allure.step(f'Check the name'):
+    with allure.step('Check the name'):
         assert response.json()['name'] == 'Acer Aspire 5', 'Name is incorrect'
-    with allure.step(f'Check the price'):
+    with allure.step('Check the price'):
         assert response.json()['data']['price'] == 1500, 'Price is incorrect'
 
 
