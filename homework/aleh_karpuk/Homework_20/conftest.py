@@ -1,6 +1,7 @@
 import pytest
 import requests
 
+
 @pytest.fixture()
 def new_object():
     body = {"name": "ASUS Vivobook Pro 14X",
