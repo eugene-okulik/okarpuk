@@ -61,3 +61,16 @@ def test_patch_a_post(patch_post_endpoint, post_id):
     patch_post_endpoint.check_response_title_is_correct(payload['name'])
 
 
+
+@allure.feature('Feature 4')
+@allure.story('Story 4')
+@allure.title('Test for Feature 4 and Story 4')
+@pytest.mark.medium
+def test_delete_a_post(delete_post_endpoint, post_id):
+    delete_post_endpoint.make_patch_in_post(post_id)
+    delete_post_endpoint.check_that_status_is_200()
+
+
+
+
+

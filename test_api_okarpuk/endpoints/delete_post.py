@@ -3,17 +3,15 @@ import allure
 from test_api_okarpuk.endpoints.endpoint import Endpoint
 
 
-class CreatePost(Endpoint):
-    post_id = None
+class DeletePost(Endpoint):
 
-    @allure.step('Create new post')
-    def create_new_post(self, payload, headers=None):
+    @allure.step('Delete a post')
+    def make_delete_post(self, post_id, payload, headers=None):
         headers = headers if headers else self.headers
-        self.response = requests.post(
-            self.url,
+        self.response = requests.patch(
+            f'{self.url}/{post_id}',
             json=payload,
             headers=headers
         )
         self.json = self.response.json()
-        self.post_id = self.json['id']
         return self.response
