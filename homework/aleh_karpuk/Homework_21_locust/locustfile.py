@@ -5,7 +5,6 @@ import random
 class CreateProductsUser(HttpUser):
     token = None
 
-
     def on_start(self):
         response = self.client.post(
             '/auth/login',
