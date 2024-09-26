@@ -2,8 +2,9 @@ from locust import task, HttpUser
 import random
 
 
-class MemeUser(HttpUser):
+class CreateProductsUser(HttpUser):
     token = None
+
 
     def on_start(self):
         response = self.client.post(
@@ -11,6 +12,8 @@ class MemeUser(HttpUser):
             json={'username': "mor_2314",
                   'password': "83r5^_"}
         )
+        print(response.status_code)
+        print(response.text)
         self.token = response.json()['token']
 
     @task(1)
@@ -31,20 +34,9 @@ class MemeUser(HttpUser):
     def create_one_product(self):
         self.client.post(
             '/products',
-            json={'title': 'test product',
-                  'price': 13.5,
-                  'description': 'lorem ipsum set'
+            json={"title": "test product",
+                  "price": "13",
+                  "description": "lorem ipsum set"
                   },
             headers={'Authorization': self.token}
         )
-
-
-
-
-
-
-
-
-
-
-
