@@ -16,6 +16,8 @@ mobile_number = '1234567890'
 date_of_birth = '1 Jun 1985'
 subjects_name = 'Math'
 current_address = 'Test city, Test street, 1 - 999'
+state_entry = 'Haryana'
+city_entry = 'Karnal'
 
 first_name_field = chrome_driver.find_element(By.XPATH, '//input[@id="firstName"]')
 last_name_field = chrome_driver.find_element(By.XPATH, '//input[@id="lastName"]')
@@ -28,8 +30,8 @@ hobbies_sport_checkbox = chrome_driver.find_element(By.XPATH, '//label[@for="hob
 hobbies_music_checkbox = chrome_driver.find_element(By.XPATH, '//label[@for="hobbies-checkbox-3"]')
 current_address_field = chrome_driver.find_element(By.XPATH, '//textarea[@id="currentAddress"]')
 
-state_dropdown = chrome_driver.find_element(By.ID, 'state')
-city_dropdown = chrome_driver.find_element(By.ID, 'city')
+state_dropdown = chrome_driver.find_element(By.XPATH, '//div[contains(text(),"Select State")]')
+city_dropdown = chrome_driver.find_element(By.XPATH, '//div[contains(text(),"Select City")]')
 
 
 submit_button = chrome_driver.find_element(By.XPATH, '//button[@id="submit"]')
@@ -56,18 +58,18 @@ sleep(2)
 
 
 state_dropdown.click()
-sleep(2)
-state_dropdown.send_keys(Keys.ARROW_DOWN)
-sleep(2)
+sleep(5)
+state_dropdown.send_keys(state_entry)
 state_dropdown.send_keys(Keys.ENTER)
-sleep(2)
+sleep(5)
 
-# city_dropdown.click()
-# sleep(2)
-# city_dropdown.send_keys(Keys.ARROW_DOWN)
-# sleep(2)
-# city_dropdown.send_keys(Keys.ENTER)
-# sleep(2)
+
+
+city_dropdown.click()
+sleep(5)
+city_dropdown.send_keys(city_entry)
+city_dropdown.send_keys(Keys.ENTER)
+sleep(2)
 
 
 
