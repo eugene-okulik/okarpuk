@@ -5,8 +5,8 @@ from time import sleep
 
 
 chrome_driver = webdriver.Chrome()
-# chrome_driver.maximize_window()
-chrome_driver.set_window_size(1000, 1080)
+chrome_driver.maximize_window()
+# chrome_driver.set_window_size(1000, 1080)
 chrome_driver.get('https://demoqa.com/automation-practice-form')
 
 first_name = 'Aleh'
@@ -30,7 +30,7 @@ hobbies_sport_checkbox = chrome_driver.find_element(By.XPATH, '//label[@for="hob
 hobbies_music_checkbox = chrome_driver.find_element(By.XPATH, '//label[@for="hobbies-checkbox-3"]')
 current_address_field = chrome_driver.find_element(By.XPATH, '//textarea[@id="currentAddress"]')
 
-state_dropdown = chrome_driver.find_element(By.XPATH, '//div[contains(text(),"Select State")]')
+state_dropdown = chrome_driver.find_element(By.XPATH, '//input[@id="state"]')
 city_dropdown = chrome_driver.find_element(By.XPATH, '//div[contains(text(),"Select City")]')
 
 
@@ -54,18 +54,24 @@ subjects_field.send_keys(Keys.ENTER)
 hobbies_sport_checkbox.click()
 hobbies_music_checkbox.click()
 current_address_field.send_keys(current_address)
+current_address_field.send_keys(Keys.ESCAPE)
+
 sleep(2)
 
 
 state_dropdown.click()
+state_dropdown.send_keys(Keys.ESCAPE)
+
 sleep(5)
 state_dropdown.send_keys(state_entry)
-state_dropdown.send_keys(Keys.ENTER)
+# state_dropdown.send_keys(Keys.ARROW_DOWN)
+# state_dropdown.send_keys(Keys.ENTER)
+
 sleep(5)
 
 
 
-city_dropdown.click()
+# city_dropdown.click()
 sleep(5)
 city_dropdown.send_keys(city_entry)
 city_dropdown.send_keys(Keys.ENTER)
