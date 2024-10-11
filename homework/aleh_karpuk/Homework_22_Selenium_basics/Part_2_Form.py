@@ -29,10 +29,8 @@ subjects_field = chrome_driver.find_element(By.XPATH, '//input[@id="subjectsInpu
 hobbies_sport_checkbox = chrome_driver.find_element(By.XPATH, '//label[@for="hobbies-checkbox-1"]')
 hobbies_music_checkbox = chrome_driver.find_element(By.XPATH, '//label[@for="hobbies-checkbox-3"]')
 current_address_field = chrome_driver.find_element(By.XPATH, '//textarea[@id="currentAddress"]')
-
-state_dropdown = chrome_driver.find_element(By.XPATH, '//input[@id="state"]')
-city_dropdown = chrome_driver.find_element(By.XPATH, '//div[contains(text(),"Select City")]')
-
+state_dropdown = chrome_driver.find_element(By.XPATH, '//input[@id="react-select-3-input"]')
+city_dropdown = chrome_driver.find_element(By.XPATH, '//input[@id="react-select-4-input"]')
 
 submit_button = chrome_driver.find_element(By.XPATH, '//button[@id="submit"]')
 
@@ -51,6 +49,7 @@ date_of_birth_field.send_keys(date_of_birth)
 date_of_birth_field.send_keys(Keys.ESCAPE)
 subjects_field.send_keys(subjects_name)
 subjects_field.send_keys(Keys.ENTER)
+
 hobbies_sport_checkbox.click()
 hobbies_music_checkbox.click()
 current_address_field.send_keys(current_address)
@@ -58,21 +57,11 @@ current_address_field.send_keys(Keys.ESCAPE)
 
 sleep(2)
 
-
-state_dropdown.click()
-state_dropdown.send_keys(Keys.ESCAPE)
-
-sleep(5)
 state_dropdown.send_keys(state_entry)
-# state_dropdown.send_keys(Keys.ARROW_DOWN)
-# state_dropdown.send_keys(Keys.ENTER)
+state_dropdown.send_keys(Keys.ENTER)
 
-sleep(5)
+sleep(2)
 
-
-
-# city_dropdown.click()
-sleep(5)
 city_dropdown.send_keys(city_entry)
 city_dropdown.send_keys(Keys.ENTER)
 sleep(2)
