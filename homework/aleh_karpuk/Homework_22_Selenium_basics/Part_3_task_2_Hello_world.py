@@ -16,6 +16,7 @@ def test_validate_text(driver):
     driver.get('https://the-internet.herokuapp.com/dynamic_loading/2')
     start_button = driver.find_element(By.XPATH, '//div[@id="start"]/button')
     start_button.click()
-    expected_element = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//div[@id="finish"]/h4')))
+    expected_element = WebDriverWait(driver, 20).until(EC.visibility_of_element_located
+                                                       ((By.XPATH, '//div[@id="finish"]/h4')))
     expected_text = expected_element.text
     assert expected_text == 'Hello World!'
