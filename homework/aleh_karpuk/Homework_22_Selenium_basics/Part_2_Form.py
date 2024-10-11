@@ -6,8 +6,8 @@ from time import sleep
 
 chrome_driver = webdriver.Chrome()
 chrome_driver.maximize_window()
-# chrome_driver.set_window_size(1000, 1080)
 chrome_driver.get('https://demoqa.com/automation-practice-form')
+
 
 first_name = 'Aleh'
 last_name = 'Karpuk'
@@ -18,6 +18,7 @@ subjects_name = 'Math'
 current_address = 'Test city, Test street, 1 - 999'
 state_entry = 'Haryana'
 city_entry = 'Karnal'
+
 
 first_name_field = chrome_driver.find_element(By.XPATH, '//input[@id="firstName"]')
 last_name_field = chrome_driver.find_element(By.XPATH, '//input[@id="lastName"]')
@@ -31,7 +32,6 @@ hobbies_music_checkbox = chrome_driver.find_element(By.XPATH, '//label[@for="hob
 current_address_field = chrome_driver.find_element(By.XPATH, '//textarea[@id="currentAddress"]')
 state_dropdown = chrome_driver.find_element(By.XPATH, '//input[@id="react-select-3-input"]')
 city_dropdown = chrome_driver.find_element(By.XPATH, '//input[@id="react-select-4-input"]')
-
 submit_button = chrome_driver.find_element(By.XPATH, '//button[@id="submit"]')
 
 
@@ -49,26 +49,15 @@ date_of_birth_field.send_keys(date_of_birth)
 date_of_birth_field.send_keys(Keys.ESCAPE)
 subjects_field.send_keys(subjects_name)
 subjects_field.send_keys(Keys.ENTER)
-
+chrome_driver.execute_script("arguments[0].scrollIntoView(true);", hobbies_sport_checkbox) # без прокрутки периодически падает, т.к. не видит элемент
 hobbies_sport_checkbox.click()
 hobbies_music_checkbox.click()
 current_address_field.send_keys(current_address)
 current_address_field.send_keys(Keys.ESCAPE)
-
-sleep(2)
-
 state_dropdown.send_keys(state_entry)
 state_dropdown.send_keys(Keys.ENTER)
-
-sleep(2)
-
 city_dropdown.send_keys(city_entry)
 city_dropdown.send_keys(Keys.ENTER)
-sleep(2)
-
-
-
-
 submit_button.click()
 
 sleep(5)
@@ -79,3 +68,5 @@ sleep(5)
 
 
 # print(result_text.get_attribute("innerText"))
+
+
