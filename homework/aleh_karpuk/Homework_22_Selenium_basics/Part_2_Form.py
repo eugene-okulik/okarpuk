@@ -13,7 +13,7 @@ first_name = 'Aleh'
 last_name = 'Karpuk'
 e_mail = 'okarpuk@example.com'
 mobile_number = '1234567890'
-date_of_birth = '1 Jun 1985'
+date_of_birth = '1 Jul 1985'
 subjects_name = 'Math'
 current_address = 'Test city, Test street, 1 - 999'
 state_entry = 'Haryana'
@@ -60,13 +60,11 @@ city_dropdown.send_keys(city_entry)
 city_dropdown.send_keys(Keys.ENTER)
 submit_button.click()
 
-sleep(5)
 
+main_table = chrome_driver.find_element(By.XPATH, '//div[@class="table-responsive"]')
 
-
-
-
-
-# print(result_text.get_attribute("innerText"))
-
-
+rows = main_table.find_elements(By.TAG_NAME, 'tr')
+for row in rows:
+    cells = row.find_elements(By.TAG_NAME, 'td')
+    for cell in cells:
+        print(cell.text)
