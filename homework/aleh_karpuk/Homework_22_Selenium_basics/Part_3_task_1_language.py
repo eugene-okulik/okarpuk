@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 import pytest
-from  time import sleep
 
 
 @pytest.fixture()
@@ -27,5 +26,3 @@ def test_validate_text(driver):
     output_text = output_result.text
 
     assert selected_option_text == output_text, f'Text invalid. Expected {selected_option_text}, but got {output_text}'
-
-sleep(5)
