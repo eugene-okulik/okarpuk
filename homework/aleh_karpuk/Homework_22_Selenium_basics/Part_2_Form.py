@@ -48,7 +48,8 @@ date_of_birth_field.send_keys(date_of_birth)
 date_of_birth_field.send_keys(Keys.ESCAPE)
 subjects_field.send_keys(subjects_name)
 subjects_field.send_keys(Keys.ENTER)
-chrome_driver.execute_script("arguments[0].scrollIntoView(true);", hobbies_sport_checkbox)  # без прокрутки периодически падает, т.к. не видит элемент
+chrome_driver.execute_script("arguments[0].scrollIntoView(true);", hobbies_sport_checkbox)
+# без прокрутки периодически падает, т.к. не видит элемент
 hobbies_sport_checkbox.click()
 hobbies_music_checkbox.click()
 current_address_field.send_keys(current_address)
