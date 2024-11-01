@@ -1,5 +1,4 @@
 from playwright.sync_api import Page, expect, Dialog
-from time import sleep
 
 
 def test_enabled_and_select(page: Page):
