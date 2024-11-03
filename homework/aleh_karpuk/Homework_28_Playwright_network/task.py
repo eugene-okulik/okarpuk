@@ -9,7 +9,7 @@ def test_iphone_title_interception(page: Page):
         response = route.fetch()
         body = response.json()
 
-
+ 
         body['partNumber'] = 'яблокофон 16 про'
 
         # for product in body.get('partNumber', []):
@@ -24,7 +24,7 @@ def test_iphone_title_interception(page: Page):
             body=body)
 
     # https://www.apple.com/shop/api/digital-mat?path=library/step0_iphone/digitalmat
-    page.route(re.compile('/digital-mat$'), modify_product_name)
+    page.route(re.compile('digital-mat'), modify_product_name)
 
 
     page.goto('https://www.apple.com/shop/buy-iphone')
