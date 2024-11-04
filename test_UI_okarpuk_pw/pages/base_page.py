@@ -1,4 +1,5 @@
-from selenium.webdriver.remote.webdriver import WebDriver
+from playwright.sync_api import Page, Locator
+import allure
 
 
 class BasePage:
@@ -6,21 +7,21 @@ class BasePage:
     page_url = None
 
 
-    def __init__(self, driver: WebDriver):
-        self.driver = driver
+    def __init__(self, page: Page):
+        self.page = page
 
+    @allure.step('Open the page')
     def open_page(self):
         if self.page_url:
-            self.driver.get(f'{self.base_url}{self.page_url}')
+            self.page.goto(f'{self.base_url}{self.page_url}')
         else:
             raise NotImplementedError('Page can not be opened for this page class')
 
-    def find_element(self, locator: tuple):
-        return self.driver.find_element(*locator)
+    @allure.step('Find element by locator')
+    def find_element(self, locator) -> Locator:
+        return self.page.locator(locator)
 
-    def find_all_elements(self, locator: tuple):
-        return self.driver.find_elements(*locator)
-
+    @allure.step('Check current page URL')
     def check_current_url(self, expected_url):
-        current_page_url = self.driver.current_url
+        current_page_url = self.page.url
         assert current_page_url == expected_url, f"Expected URL: {expected_url}, but got: {current_page_url}"
