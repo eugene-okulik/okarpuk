@@ -1,3 +1,5 @@
+from playwright.sync_api import Page, Locator, expect
+
 from test_UI_okarpuk_pw.pages.base_page import BasePage
 from test_UI_okarpuk_pw.pages.locators import sale_locators as loc
 
@@ -11,13 +13,12 @@ class Sale(BasePage):
         cart_icon.click()
 
     def check_empty_cart_message(self, expected_error_text):
-        empty_cart_message = self.find_element(loc.empty_cart_message_loc)
-        assert empty_cart_message.text == expected_error_text, "Empty cart message incorrect"
+        expect(self.find_element(loc.empty_cart_message_loc)).to_have_text(expected_error_text)
 
 
     def find_product_by_search(self, product_name):
         search_field = self.find_element(loc.search_field_loc)
-        search_field.send_keys(product_name)
+        search_field.fill(product_name)
         search_button = self.find_element(loc.search_button_loc)
         search_button.click()
 

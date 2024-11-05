@@ -1,3 +1,6 @@
+from playwright.sync_api import Page, Locator, expect
+
+
 from test_UI_okarpuk_pw.pages.base_page import BasePage
 from test_UI_okarpuk_pw.pages.locators import men_sale_locators as loc
 
@@ -6,5 +9,4 @@ class MenSale(BasePage):
 
 
     def check_men_sale_page_name(self):
-        men_sale_page_name = self.find_element(loc.men_sale_page_name_loc)
-        assert men_sale_page_name.text == "Men Sale", f"The page name - {men_sale_page_name.text} is invalid"
+        expect(self.find_element(loc.men_sale_page_name_loc).to_have_text("Men Sale"))
