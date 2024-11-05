@@ -3,8 +3,8 @@ from time import sleep
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
-from pages.base_page import BasePage
-from pages.locators import eco_friendly_locators as loc
+from test_UI_okarpuk_pw.pages.base_page import BasePage
+from test_UI_okarpuk_pw.pages.locators import eco_friendly_locators as loc
 
 
 class EcoFriendly(BasePage):

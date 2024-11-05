@@ -1,5 +1,8 @@
-from pages.base_page import BasePage
-from pages.locators import create_account_locators as loc
+from playwright.sync_api import Page, Locator, expect
+
+from test_UI_okarpuk_pw.pages.base_page import BasePage
+from test_UI_okarpuk_pw.pages.locators import create_account_locators as loc
+from test_UI_okarpuk_pw.pages.locators.create_account_locators import js_injection_error_loc
 
 
 class CreateAccount(BasePage):
@@ -13,19 +16,16 @@ class CreateAccount(BasePage):
         password_field = self.find_element(loc.password_field_loc)
         confirm_password_field = self.find_element(loc.confirm_password_field_loc)
         create_account_button = self.find_element(loc.create_account_button_loc)
-        first_name_field.send_keys(first_name)
-        last_name_field.send_keys(last_name)
-        email_field.send_keys(email)
-        password_field.send_keys(password)
-        confirm_password_field.send_keys(confirm_password)
-        self.driver.execute_script("window.scrollBy(0, 2000);")
+        first_name_field.fill(first_name)
+        last_name_field.fill(last_name)
+        email_field.fill(email)
+        password_field.fill(password)
+        confirm_password_field.fill(confirm_password)
+        # self.page.execute_script("window.scrollBy(0, 2000);")
         create_account_button.click()
 
     def check_empty_last_name_error(self, expected_error_text):
-        last_name_error = self.find_element(loc.last_name_empty_error_loc)
-        assert last_name_error.text == expected_error_text, \
-            f"Expected error text: {expected_error_text}, but got: {last_name_error.text}"
+        expect(self.find_element(loc.last_name_empty_error_loc)).to_have_text(expected_error_text)
 
     def check_js_injection_error(self, expected_error_text):
-        js_injection_error = self.find_element(loc.js_injection_error_loc)
-        assert js_injection_error.text == expected_error_text, "JS injection can't be entered"
+        expect(self.find_element(loc.js_injection_error_loc)).to_have_text(js_injection_error_loc)

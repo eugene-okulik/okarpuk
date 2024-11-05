@@ -1,5 +1,5 @@
-from pages.base_page import BasePage
-from pages.locators import customer_login_locators as loc
+from test_UI_okarpuk_pw.pages.base_page import BasePage
+from test_UI_okarpuk_pw.pages.locators import customer_login_locators as loc
 
 
 class CustomerLogin(BasePage):
