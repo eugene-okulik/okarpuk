@@ -6,7 +6,6 @@ from test_UI_okarpuk_pw.pages.locators import customer_login_locators as loc
 
 class CustomerLogin(BasePage):
 
-
     def check_customer_login_page_name(self):
         expect(self.find_element(loc.customer_login_page_name_loc)).to_have_text("Customer Login")
 

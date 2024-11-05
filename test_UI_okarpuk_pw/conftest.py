@@ -16,25 +16,31 @@ def page(context: BrowserContext, playwright):
     page.set_viewport_size({'width': 1920, 'height': 1080})
     return page
 
+
 @pytest.fixture()
 def create_account_page(page):
     return CreateAccount(page)
+
 
 @pytest.fixture()
 def eco_friendly_page(page):
     return EcoFriendly(page)
 
+
 @pytest.fixture()
 def customer_login_page(page):
     return CustomerLogin(page)
+
 
 @pytest.fixture()
 def sale_page(page):
     return Sale(page)
 
+
 @pytest.fixture()
 def search_result_page(page):
     return SearchResult(page)
+
 
 @pytest.fixture()
 def men_sale_page(page):

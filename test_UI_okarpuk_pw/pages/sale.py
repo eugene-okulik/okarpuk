@@ -7,7 +7,6 @@ from test_UI_okarpuk_pw.pages.locators import sale_locators as loc
 class Sale(BasePage):
     page_url = '/sale.html'
 
-
     def click_on_cart_icon(self):
         cart_icon = self.find_element(loc.cart_icon_loc)
         cart_icon.click()

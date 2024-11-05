@@ -9,7 +9,6 @@ class EcoFriendly(BasePage):
     product_name_text = None
     product_price_text = None
 
-
     def get_one_of_products(self, product_index):
         selected_product = self.page.locator(loc.products_list_loc).nth(product_index)
         return selected_product

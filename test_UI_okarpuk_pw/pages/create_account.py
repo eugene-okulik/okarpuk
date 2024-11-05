@@ -7,7 +7,6 @@ from test_UI_okarpuk_pw.pages.locators import create_account_locators as loc
 class CreateAccount(BasePage):
     page_url = '/customer/account/create/'
 
-
     def fill_create_account_form(self, first_name, last_name, email, password, confirm_password):
         first_name_field = self.find_element(loc.first_name_field_loc)
         last_name_field = self.find_element(loc.last_name_field_loc)
