@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, Locator, expect
+from playwright.sync_api import expect
 
 from test_UI_okarpuk_pw.pages.base_page import BasePage
 from test_UI_okarpuk_pw.pages.locators import search_result_locators as loc

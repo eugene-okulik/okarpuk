@@ -16,7 +16,6 @@ def page(context: BrowserContext, playwright):
     page.set_viewport_size({'width': 1920, 'height': 1080})
     return page
 
-
 @pytest.fixture()
 def create_account_page(page):
     return CreateAccount(page)

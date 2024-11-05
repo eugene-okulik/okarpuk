@@ -1,8 +1,7 @@
-from playwright.sync_api import Page, Locator, expect
+from playwright.sync_api import expect
 
 from test_UI_okarpuk_pw.pages.base_page import BasePage
 from test_UI_okarpuk_pw.pages.locators import create_account_locators as loc
-from test_UI_okarpuk_pw.pages.locators.create_account_locators import js_injection_error_loc
 
 
 class CreateAccount(BasePage):
@@ -21,11 +20,10 @@ class CreateAccount(BasePage):
         email_field.fill(email)
         password_field.fill(password)
         confirm_password_field.fill(confirm_password)
-        # self.page.execute_script("window.scrollBy(0, 2000);")
         create_account_button.click()
 
     def check_empty_last_name_error(self, expected_error_text):
         expect(self.find_element(loc.last_name_empty_error_loc)).to_have_text(expected_error_text)
 
     def check_js_injection_error(self, expected_error_text):
-        expect(self.find_element(loc.js_injection_error_loc)).to_have_text(js_injection_error_loc)
+        expect(self.find_element(loc.js_injection_error_loc)).to_have_text(expected_error_text)
