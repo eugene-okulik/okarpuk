@@ -7,7 +7,7 @@ def test_add_product_to_wish_list_without_login(eco_friendly_page, customer_logi
     selected_product = eco_friendly_page.get_one_of_products(0)
     eco_friendly_page.add_product_to_wish_list(selected_product)
     customer_login_page.check_customer_login_page_name()
-    customer_login_page.check_must_login_alert_text()
+    customer_login_page.check_must_login_alert_text("You must login or register to add items to your wishlist.")
 
 
 @pytest.mark.smoke

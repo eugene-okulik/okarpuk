@@ -9,6 +9,6 @@ class CustomerLogin(BasePage):
     def check_customer_login_page_name(self):
         expect(self.find_element(loc.customer_login_page_name_loc)).to_have_text("Customer Login")
 
-    def check_must_login_alert_text(self):
+    def check_must_login_alert_text(self, expected_text):
         alert_message = self.page.locator(loc.alert_message_loc).first
-        expect(alert_message).to_have_text("You must login or register to add items to your wishlist.")
+        expect(alert_message).to_have_text(expected_text)
