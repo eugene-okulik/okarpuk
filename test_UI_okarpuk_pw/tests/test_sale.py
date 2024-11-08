@@ -17,7 +17,7 @@ def test_search_invalid_product(sale_page, search_result_page):
 
 
 @pytest.mark.smoke
-def test_mens_bargains_banner(sale_page):
+def test_mens_bargains_banner(sale_page, selected_products_page):
     sale_page.open_page()
     sale_page.click_on_mens_bargains_banner()
-    sale_page.check_men_sale_page_name("Men Sale")
+    selected_products_page.check_products_page_name("Men Sale")

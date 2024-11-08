@@ -23,6 +23,3 @@ class Sale(BasePage):
     def click_on_mens_bargains_banner(self):
         mens_bargains_banner = self.find_element(loc.mens_bargains_banner_loc)
         mens_bargains_banner.click()
-
-    def check_men_sale_page_name(self, expected_page_name):
-        expect(self.find_element(loc.men_sale_page_name_loc)).to_have_text(expected_page_name)
