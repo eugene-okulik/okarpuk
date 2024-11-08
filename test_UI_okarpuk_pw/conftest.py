@@ -41,6 +41,7 @@ def sale_page(page):
 def search_result_page(page):
     return SearchResult(page)
 
+
 @pytest.fixture()
 def selected_products_page(page):
     return ProductsPage(page)
