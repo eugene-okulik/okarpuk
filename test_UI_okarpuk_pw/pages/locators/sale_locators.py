@@ -1,0 +1,5 @@
+cart_icon_loc = '//a[@class="action showcart"]'
+empty_cart_message_loc = '//strong[@class="subtitle empty"]'
+search_field_loc = '//input[@id="search"]'
+search_button_loc = '//button[@title="Search"]'
+mens_bargains_banner_loc = '//a[@class="block-promo sale-mens"]'
