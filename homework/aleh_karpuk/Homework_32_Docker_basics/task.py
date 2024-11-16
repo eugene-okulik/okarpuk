@@ -1,14 +1,13 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+import datetime
 
+my_date = 'Jan 15, 2023 - 12:05:33'
 
-chrome_driver = webdriver.Chrome()
-chrome_driver.maximize_window()
-chrome_driver.get('https://www.qa-practice.com/elements/input/simple')
-input_data = 'Test_input'
-text_string = chrome_driver.find_element(By.XPATH, '//input[@placeholder="Submit me"]')
-text_string.send_keys(input_data)
-text_string.send_keys(Keys.ENTER)
-result_text = chrome_driver.find_element(By.XPATH, '//p[@id="result-text"]')
-print(result_text.get_attribute("innerText"))
+python_date = datetime.datetime.strptime(my_date, '%b %d, %Y - %H:%M:%S')
+print(f'Python date and time format: {python_date}')
+
+my_month = python_date.strftime('%B')
+print(f'Month: {my_month}')
+
+custom_date = python_date.strftime('%d.%m.%Y, %H:%M')
+print(f'Custom date and time format: {custom_date}')
+

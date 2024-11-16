@@ -1,5 +1,5 @@
 FROM python
-COPY Test.py .
-COPY requirements .
+COPY task.py .
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 CMD ["python", "task.py"]
