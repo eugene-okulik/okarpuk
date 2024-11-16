@@ -10,4 +10,3 @@ print(f'Month: {my_month}')
 
 custom_date = python_date.strftime('%d.%m.%Y, %H:%M')
 print(f'Custom date and time format: {custom_date}')
-
